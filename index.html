@@ -308,15 +308,26 @@
 
     <!-- 详情模态框 -->
     <div id="modal" class="fixed inset-0 bg-black/95 hidden flex items-center justify-center transition-opacity duration-300 z-40">
-        <div class="bg-[#111] p-8 rounded-lg w-11/12 max-w-4xl border border-[#333] max-h-[90vh] flex flex-col">
-            <div class="flex justify-between items-center mb-6 flex-none">
-                <h2 id="modalTitle" class="text-2xl font-bold gradient-text break-words pr-4 max-w-[80%]"></h2>
-                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-2xl transition-colors flex-shrink-0">&times;</button>
-            </div>
-            <div id="modalContent" class="overflow-auto flex-1 min-h-0">
-                <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
+        <div id="modalDialog" class="bg-[#111] p-6 rounded-lg border border-[#333] w-full max-w-3xl max-h-[90vh] flex flex-col relative">
+            <!-- 关闭按钮 -->
+            <button onclick="closeModal()" class="close-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <!-- 新增: 可滚动的内容包裹层 -->
+            <div class="overflow-y-auto flex-grow"> 
+                <!-- 模态框头部 -->
+                <div id="modalHeader" class="flex justify-between items-start mb-4 pb-2 border-b border-[#333] flex-none">
+                    <h3 id="modalTitle" class="text-2xl font-bold gradient-text flex-grow break-words"></h3>
+                </div>
+                <!-- 模态框内容区域 -->
+                <div id="modalContent" class="flex-grow"> <!-- 移除了 overflow-y-auto -->
+                    <!-- 内容将在这里动态填充 -->
                 </div>
             </div>
+            <!-- 模态框脚部 (如果需要) -->
+            <!-- <div id="modalFooter" class="mt-4 pt-2 border-t border-[#333] flex-none"></div> -->
         </div>
     </div>
 
